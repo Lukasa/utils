@@ -2,7 +2,12 @@
 # This script is a one-off to place two-digit numbers in filenames.
 import os, sys
 
-filedir = os.path.expanduser(sys.argv[1])
+try:
+    filedir = os.path.expanduser(sys.argv[1])
+except IndexError:
+    print 'Script must be called with one argument.'
+    sys.exit(1)
+
 if (not filedir[-1] == '/'):
     filedir += '/'
 files = os.listdir(filedir)

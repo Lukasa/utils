@@ -12,20 +12,20 @@ if (not filedir[-1] == '/'):
     filedir += '/'
 files = os.listdir(filedir)
 
-for item in files:
-    name = item.split('.')[0].split('_')
-    extn = item.split('.')[1]
-    output = []
+for movie_file in files:
+    name = movie_file.split('.')[0].split('_')
+    extn = movie_file.split('.')[1]
+    output_name = []
 
     for element in name:
         try:
-            no = int(element)
-            if no < 10:
-                output.append('0' + str(no))
+            number = int(element)
+            if number < 10:
+                output_name.append('0' + str(number))
             else:
-                output.append(str(no))
+                output_name.append(str(number))
         except ValueError:
-            output.append(element)
+            output_name.append(element)
 
-    output = '_'.join(output)
-    os.rename(filedir + item, filedir + output + '.' + extn)
+    output_name = '_'.join(output_name)
+    os.rename(filedir + movie_file, filedir + output_name + '.' + extn)
